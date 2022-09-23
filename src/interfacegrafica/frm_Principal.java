@@ -32,7 +32,7 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuAgenda = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -65,10 +65,15 @@ public class frm_Principal extends javax.swing.JFrame {
                 .addContainerGap(132, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Arquivo");
+        menuAgenda.setText("Arquivo");
 
         menuCadastrar.setText("Cadastrar");
-        jMenu1.add(menuCadastrar);
+        menuCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastrarActionPerformed(evt);
+            }
+        });
+        menuAgenda.add(menuCadastrar);
 
         menuSair.setText("Sair");
         menuSair.addActionListener(new java.awt.event.ActionListener() {
@@ -76,9 +81,9 @@ public class frm_Principal extends javax.swing.JFrame {
                 menuSairActionPerformed(evt);
             }
         });
-        jMenu1.add(menuSair);
+        menuAgenda.add(menuSair);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuAgenda);
 
         jMenu2.setText("Aplicativos");
 
@@ -134,6 +139,11 @@ public class frm_Principal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Versão 1.0");
     }//GEN-LAST:event_jMenu3MouseClicked
 
+    private void menuCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarActionPerformed
+        frm_Agenda agenda = new frm_Agenda();
+        agenda.setVisible(true);
+    }//GEN-LAST:event_menuCadastrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -172,12 +182,12 @@ public class frm_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu menuAgenda;
     private javax.swing.JMenuItem menuCadastrar;
     private javax.swing.JMenuItem menuSair;
     // End of variables declaration//GEN-END:variables
