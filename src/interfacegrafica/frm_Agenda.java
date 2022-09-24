@@ -5,6 +5,7 @@
  */
 package interfacegrafica;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -82,6 +83,11 @@ public class frm_Agenda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbLista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbListaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbLista);
 
         btnInserir.setBackground(new java.awt.Color(255, 255, 255));
@@ -94,6 +100,11 @@ public class frm_Agenda extends javax.swing.JFrame {
 
         btnExcluir.setBackground(new java.awt.Color(255, 255, 255));
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnAtualizar.setBackground(new java.awt.Color(255, 255, 255));
         btnAtualizar.setText("Atualizar");
@@ -182,6 +193,22 @@ public class frm_Agenda extends javax.swing.JFrame {
         Object[] dados = {txtNome.getText(), txtTelefone.getText()};
         dtmAgenda.addRow(dados);        
     }//GEN-LAST:event_btnInserirActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+       if (tbLista.getSelectedRow() !=-1){
+       DefaultTableModel dtmAgenda = (DefaultTableModel) tbLista.getModel();
+       dtmAgenda.removeRow(tbLista.getSelectedRow());
+       }else{
+           JOptionPane.showMessageDialog(null, "Selecione um registro para excluir!");
+       }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void tbListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbListaMouseClicked
+        if (tbLista.getSelectedRow() !=-1){
+        txtNome.setText(tbLista.getValueAt(tbLista.getSelectedRow(), 0).toString());
+        txtTelefone.setText(tbLista.getValueAt(tbLista.getSelectedRow(), 1).toString());
+        }  
+    }//GEN-LAST:event_tbListaMouseClicked
 
     /**
      * @param args the command line arguments
