@@ -108,6 +108,11 @@ public class frm_Agenda extends javax.swing.JFrame {
 
         btnAtualizar.setBackground(new java.awt.Color(255, 255, 255));
         btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
 
         try {
             txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) # ####-####")));
@@ -209,6 +214,13 @@ public class frm_Agenda extends javax.swing.JFrame {
         txtTelefone.setText(tbLista.getValueAt(tbLista.getSelectedRow(), 1).toString());
         }  
     }//GEN-LAST:event_tbListaMouseClicked
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        if (tbLista.getSelectedRow() !=-1){
+            tbLista.setValueAt(txtNome.getText(), tbLista.getSelectedRow(), 0);
+            tbLista.setValueAt(txtTelefone.getText(), tbLista.getSelectedRow(), 1);                     
+        }
+    }//GEN-LAST:event_btnAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
